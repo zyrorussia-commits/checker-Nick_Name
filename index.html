@@ -17,10 +17,8 @@
     <header class="hero">
       <div class="hero-copy">
         <p class="eyebrow">RAGE RUSSIA</p>
-        <h1>Компактная проверка RP ников</h1>
-        <p class="hero-text">
-          Быстрая проверка ника по шаблону `Имя_Фамилия` с подсказками и генерацией персонажа.
-        </p>
+        <h1>RP-checker</h1>
+        <p class="hero-text">Быстрая проверка ника по формату <code>Имя_Фамилия</code>.</p>
       </div>
 
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Переключить тему">
@@ -33,14 +31,14 @@
         <div class="panel-head">
           <div>
             <p class="panel-kicker">Проверка ника</p>
-            <h2>RP-checker</h2>
+            <h2>checker-Nick_Name</h2>
           </div>
           <button class="ghost-button" id="faqButton" type="button">FAQ</button>
         </div>
 
         <label class="field" for="nicknameInput">
           <span>Введите ник</span>
-          <input id="nicknameInput" name="nickname" type="text" placeholder="Пример: Fernando_Namikazze" autocomplete="off">
+          <input id="nicknameInput" name="nickname" type="text" placeholder="Пример: John_Smith" autocomplete="off">
         </label>
 
         <div class="actions">
@@ -49,35 +47,20 @@
           <button class="primary-button" id="checkButton" type="button">Проверить</button>
         </div>
 
+        <div class="mini-rules">
+          <span>Только английские буквы</span>
+          <span>Формат Имя_Фамилия</span>
+          <span>Без admin / moderator</span>
+        </div>
+
         <div class="status" id="statusBox">
           <p class="status-empty">Здесь появится результат проверки.</p>
         </div>
+
+        <div class="recent-strip" id="recentList">
+          <p class="muted">Последние проверки появятся здесь.</p>
+        </div>
       </section>
-
-      <aside class="sidebar">
-        <section class="panel">
-          <div class="panel-head compact">
-            <div>
-              <p class="panel-kicker">История</p>
-              <h3>Последние проверки</h3>
-            </div>
-          </div>
-          <div class="recent-list" id="recentList">
-            <p class="muted">Пока пусто. Проверь первый ник.</p>
-          </div>
-        </section>
-
-        <section class="panel panel-tip">
-          <p class="panel-kicker">Формат</p>
-          <h3>Что считается валидным</h3>
-          <ul class="rules">
-            <li>Только английские буквы</li>
-            <li>Формат `Имя_Фамилия`</li>
-            <li>Имя и фамилия с заглавной буквы</li>
-            <li>Без запрещенных слов и ролей</li>
-          </ul>
-        </section>
-      </aside>
     </main>
   </div>
 
@@ -88,7 +71,7 @@
         <button class="icon-button" data-close="faqModal" type="button">Закрыть</button>
       </div>
       <div class="modal-body">
-        <p>Эта страница подходит для GitHub Pages, обычного хостинга и встраивания в форум, если там разрешен `iframe`.</p>
+        <p>Страница подходит для GitHub Pages и вставки на форум через iframe.</p>
         <p>Если ник не проходит, сервис покажет ошибки и предложит более аккуратные варианты.</p>
       </div>
     </div>

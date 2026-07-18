@@ -61,9 +61,9 @@ input {
 
 .page-shell {
   position: relative;
-  max-width: 980px;
+  max-width: 760px;
   margin: 0 auto;
-  padding: 16px 14px 20px;
+  padding: 12px 10px 14px;
 }
 
 .ambient {
@@ -76,18 +76,18 @@ input {
 }
 
 .ambient-a {
-  top: 28px;
-  right: 24px;
-  width: 150px;
-  height: 150px;
+  top: 18px;
+  right: 12px;
+  width: 110px;
+  height: 110px;
   background: rgba(212, 73, 31, 0.22);
 }
 
 .ambient-b {
-  bottom: 20px;
-  left: 10px;
-  width: 130px;
-  height: 130px;
+  bottom: 10px;
+  left: 0;
+  width: 90px;
+  height: 90px;
   background: rgba(66, 120, 255, 0.16);
 }
 
@@ -101,9 +101,9 @@ input {
 .hero {
   display: flex;
   justify-content: space-between;
-  gap: 14px;
+  gap: 10px;
   align-items: flex-start;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 .eyebrow,
@@ -126,17 +126,17 @@ input {
 }
 
 .hero h1 {
-  max-width: 560px;
-  font-size: clamp(1.6rem, 3vw, 2.5rem);
-  line-height: 1;
+  max-width: 420px;
+  font-size: clamp(1.35rem, 2.6vw, 2rem);
+  line-height: 1.02;
 }
 
 .hero-text {
-  max-width: 520px;
-  margin: 10px 0 0;
+  max-width: 420px;
+  margin: 6px 0 0;
   color: var(--muted);
-  font-size: 0.92rem;
-  line-height: 1.45;
+  font-size: 0.84rem;
+  line-height: 1.35;
 }
 
 .theme-toggle,
@@ -161,7 +161,7 @@ input {
 .secondary-button,
 .primary-button,
 .icon-button {
-  padding: 9px 14px;
+  padding: 8px 12px;
   font-weight: 700;
 }
 
@@ -184,28 +184,20 @@ input {
 }
 
 .layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(220px, 0.7fr);
-  gap: 14px;
+  display: block;
 }
 
 .panel {
   position: relative;
   background: var(--panel);
   border: 1px solid var(--line);
-  border-radius: 20px;
+  border-radius: 18px;
   box-shadow: var(--shadow);
-  padding: 16px;
+  padding: 14px;
 }
 
 .panel-primary {
-  min-height: 360px;
-}
-
-.panel-tip {
-  background:
-    linear-gradient(180deg, rgba(212, 73, 31, 0.08), transparent),
-    var(--panel);
+  min-height: 0;
 }
 
 .panel-head {
@@ -213,7 +205,7 @@ input {
   justify-content: space-between;
   gap: 12px;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .panel-head.compact {
@@ -226,20 +218,20 @@ input {
 
 .field span {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   color: var(--muted);
   font-weight: 700;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
 }
 
 .field input {
   width: 100%;
-  padding: 14px 16px;
+  padding: 12px 14px;
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.42);
   color: var(--text);
-  font-size: 0.98rem;
+  font-size: 0.94rem;
   outline: none;
 }
 
@@ -255,15 +247,32 @@ body.is-dark .field input {
 .actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin: 12px 0 14px;
+  gap: 7px;
+  margin: 10px 0 10px;
+}
+
+.mini-rules {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.mini-rules span {
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.2;
 }
 
 .status {
-  min-height: 180px;
+  min-height: 140px;
   border: 1px dashed var(--line);
-  border-radius: 16px;
-  padding: 14px;
+  border-radius: 14px;
+  padding: 12px;
   background: rgba(255, 255, 255, 0.24);
 }
 
@@ -297,8 +306,8 @@ body.is-dark .status {
 }
 
 .status h3 {
-  margin: 12px 0 8px;
-  font-size: 1.1rem;
+  margin: 10px 0 8px;
+  font-size: 1rem;
 }
 
 .error-list,
@@ -319,22 +328,31 @@ body.is-dark .status {
 .suggestions {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 12px;
+  gap: 6px;
+  margin-top: 10px;
 }
 
 .suggestion,
 .show-lore,
 .recent-item,
 .tab-button {
-  padding: 8px 12px;
+  padding: 7px 10px;
 }
 
 .result-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 12px;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.recent-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
 }
 
 .recent-list {
@@ -344,11 +362,11 @@ body.is-dark .status {
 }
 
 .recent-item {
-  display: flex;
+  display: inline-flex;
   justify-content: space-between;
-  gap: 12px;
+  gap: 8px;
   align-items: center;
-  width: 100%;
+  width: auto;
   text-align: left;
 }
 
@@ -359,7 +377,7 @@ body.is-dark .status {
 
 .recent-item span {
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
 }
 
 .modal {
@@ -441,10 +459,6 @@ body.is-dark .lore-card {
 }
 
 @media (max-width: 920px) {
-  .layout {
-    grid-template-columns: 1fr;
-  }
-
   .hero {
     flex-direction: column;
     align-items: stretch;
@@ -453,15 +467,11 @@ body.is-dark .lore-card {
   .theme-toggle {
     align-self: flex-start;
   }
-
-  .panel-primary {
-    min-height: 0;
-  }
 }
 
 @media (max-width: 640px) {
   .page-shell {
-    padding-inline: 10px;
+    padding-inline: 8px;
   }
 
   .panel,
