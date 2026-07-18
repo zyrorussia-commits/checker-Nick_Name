@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RAGE | RP-NICK</title>
+  <title>Zyro Russia | RP Nick Checker</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -16,14 +16,10 @@
 
     <header class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">RAGE RUSSIA</p>
-        <h1>RP-checker</h1>
-        <p class="hero-text">Быстрая проверка ника по формату <code>Имя_Фамилия</code>.</p>
+        <p class="eyebrow">ZYRO RUSSIA</p>
+        <h1>Проверка RP ников</h1>
+        <p class="hero-text">Проверка ника по формату <code>Name_Surname</code>.</p>
       </div>
-
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Переключить тему">
-        <span>Тема</span>
-      </button>
     </header>
 
     <main class="layout">
@@ -31,26 +27,25 @@
         <div class="panel-head">
           <div>
             <p class="panel-kicker">Проверка ника</p>
-            <h2>checker-Nick_Name</h2>
+            <h2>Zyro Russia</h2>
           </div>
           <button class="ghost-button" id="faqButton" type="button">FAQ</button>
         </div>
 
         <label class="field" for="nicknameInput">
           <span>Введите ник</span>
-          <input id="nicknameInput" name="nickname" type="text" placeholder="Пример: John_Smith" autocomplete="off">
+          <input id="nicknameInput" name="nickname" type="text" placeholder="Пример: John_Wick" autocomplete="off">
         </label>
 
         <div class="actions">
           <button class="secondary-button" id="randomButton" type="button">Случайный ник</button>
-          <button class="secondary-button" id="copyButton" type="button">Копировать</button>
           <button class="primary-button" id="checkButton" type="button">Проверить</button>
         </div>
 
         <div class="mini-rules">
           <span>Только английские буквы</span>
-          <span>Формат Имя_Фамилия</span>
-          <span>Без admin / moderator</span>
+          <span>Формат Name_Surname</span>
+          <span>Без цифр и лишних слов</span>
         </div>
 
         <div class="status" id="statusBox">
@@ -67,31 +62,27 @@
   <dialog class="modal" id="faqModal">
     <div class="modal-card">
       <div class="modal-head">
-        <h3>FAQ</h3>
+        <h3>Частые вопросы</h3>
         <button class="icon-button" data-close="faqModal" type="button">Закрыть</button>
       </div>
-      <div class="modal-body">
-        <p>Страница подходит для GitHub Pages и вставки на форум через iframe.</p>
-        <p>Если ник не проходит, сервис покажет ошибки и предложит более аккуратные варианты.</p>
-      </div>
-    </div>
-  </dialog>
-
-  <dialog class="modal" id="loreModal">
-    <div class="modal-card modal-card-wide">
-      <div class="modal-head">
-        <h3>Личное дело персонажа</h3>
-        <button class="icon-button" data-close="loreModal" type="button">Закрыть</button>
-      </div>
-      <div class="tabs" id="loreTabs">
-        <button class="tab-button is-active" data-tab="info" type="button">Инфо</button>
-        <button class="tab-button" data-tab="bio" type="button">Биография</button>
-        <button class="tab-button" data-tab="crime" type="button">Криминал</button>
-      </div>
-      <div class="modal-body">
-        <div class="tab-panel is-active" data-panel="info" id="loreInfo"></div>
-        <div class="tab-panel" data-panel="bio" id="loreBio"></div>
-        <div class="tab-panel" data-panel="crime" id="loreCrime"></div>
+      <div class="modal-body faq-body">
+        <p><strong>Основные правила составления RP ников.</strong></p>
+        <p><strong>Что такое RP ник?</strong></p>
+        <p>RP (Role Play) ник — это имя в формате Имя_Фамилия. Оно должно выглядеть как реальное имя человека.</p>
+        <p><strong>Основные правила:</strong></p>
+        <ul class="detail-list">
+          <li>Никаких цифр и спецсимволов (кроме "_").</li>
+          <li>Первая буква имени и фамилии — заглавная.</li>
+          <li>Остальные буквы — строчные.</li>
+          <li>Имя и фамилия должны быть на английском.</li>
+        </ul>
+        <p><strong>Примеры:</strong></p>
+        <ul class="detail-list">
+          <li>✅ John_Wick</li>
+          <li>❌ killer228</li>
+          <li>✅ Anna_Karenina</li>
+          <li>❌ alex_mason</li>
+        </ul>
       </div>
     </div>
   </dialog>

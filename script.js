@@ -1,58 +1,33 @@
 const firstNames = [
-  "James", "John", "Robert", "Michael", "William", "David", "Richard", "Joseph",
-  "Thomas", "Charles", "Christopher", "Daniel", "Matthew", "Anthony", "Donald",
-  "Mark", "Paul", "Steven", "Andrew", "Kenneth", "Mary", "Patricia", "Jennifer",
-  "Linda", "Elizabeth", "Barbara", "Susan", "Jessica", "Sarah", "Karen", "Nancy",
-  "Lisa", "Betty", "Margaret", "Sandra", "Ashley", "Kimberly", "Emily", "Donna",
-  "Michelle"
+  "John", "Alex", "Michael", "Daniel", "Robert", "James", "Anthony", "David",
+  "Ryan", "Kevin", "Thomas", "Oliver", "Lucas", "Adam", "Andrew"
 ];
 
 const lastNames = [
-  "Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson",
-  "Moore", "Taylor", "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin",
-  "Thompson", "Garcia", "Martinez", "Robinson", "Clark", "Rodriguez", "Lewis",
-  "Lee", "Walker", "Hall", "Allen", "Young", "Hernandez", "King", "Wright", "Lopez",
-  "Hill", "Scott", "Green", "Adams", "Baker", "Gonzalez", "Nelson", "Carter"
+  "Wick", "Smith", "Mason", "Walker", "Carter", "Miller", "Jackson", "Taylor",
+  "Anderson", "Parker", "Hunter", "Cooper", "Brooks", "Foster", "Bennett"
 ];
-
-const origins = ["Los Santos", "Las Venturas", "Vice City", "Liberty City", "Dallas", "Detroit", "Chicago", "Phoenix", "Seattle"];
-const traits = ["хладнокровный", "общительный", "закрытый", "амбициозный", "расчетливый", "спокойный", "наблюдательный", "упрямый"];
-const jobs = ["автомеханик", "дальнобойщик", "охранник", "таксист", "юрист", "спасатель", "бармен", "продавец автомобилей", "фельдшер"];
-const habits = ["курит слишком много кофе", "ведет заметки о каждом знакомом", "всегда приходит раньше времени", "избегает шумных мест", "тренируется по ночам", "носит старые часы как талисман"];
-const childhoods = ["вырос в небогатой семье и рано начал работать", "воспитывался бабушкой и дедушкой", "провел детство между двумя городами", "рано увлекся машинами и уличной культурой", "с детства мечтал выбраться из своего района"];
-const diseases = ["без хронических заболеваний", "слабое зрение", "старый перелом руки", "проблемы со сном", "хроническая мигрень"];
-const weaponSkills = ["не владеет оружием", "умеет обращаться с пистолетом", "прошел базовую стрелковую подготовку", "уверенно стреляет на короткой дистанции"];
 
 const bannedBadWords = [
-  "fuck", "shit", "bitch", "nazi", "gay", "pidor", "eblan", "chmo", "piska", "pizda",
-  "gandon", "rage", "ragerussia", "dodik", "govno", "xyi", "sosat", "givno", "cho",
-  "govnyar", "zalupa", "russia", "ukraine", "terorism", "mq"
-];
-
-const bannedRoles = [
-  "admin", "moder", "moderator", "administation", "osnova", "zga", "ga", "kyrator", "kyr"
+  "admin", "adm", "moder", "moderator", "curator", "owner", "helper", "support",
+  "killer", "kill", "dead", "death", "terror", "terrorist", "nazi",
+  "fuck", "fck", "shit", "bitch", "dick", "cock", "pussy", "sex",
+  "pidor", "pidar", "pidoras", "ebal", "eblan", "blya", "blyad", "suka",
+  "hui", "xui", "nahui", "gandon", "chmo", "dolbaeb", "debil", "idiot",
+  "228", "666", "777", "1488"
 ];
 
 const els = {
   input: document.getElementById("nicknameInput"),
   status: document.getElementById("statusBox"),
   random: document.getElementById("randomButton"),
-  copy: document.getElementById("copyButton"),
   check: document.getElementById("checkButton"),
   recent: document.getElementById("recentList"),
-  theme: document.getElementById("themeToggle"),
   faqButton: document.getElementById("faqButton"),
-  faqModal: document.getElementById("faqModal"),
-  loreModal: document.getElementById("loreModal"),
-  loreInfo: document.getElementById("loreInfo"),
-  loreBio: document.getElementById("loreBio"),
-  loreCrime: document.getElementById("loreCrime"),
-  loreTabs: document.getElementById("loreTabs")
+  faqModal: document.getElementById("faqModal")
 };
 
-let currentLore = null;
-const recentChecksKey = "rp-checker-recent";
-const themeKey = "rp-checker-theme";
+const recentChecksKey = "zyro-russia-recent";
 
 function randomFrom(list) {
   return list[Math.floor(Math.random() * list.length)];
@@ -67,135 +42,70 @@ function capitalizeWord(value) {
   return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
 }
 
-function generateCriminalRecord() {
-  const roll = Math.random();
-  if (roll < 0.55) {
-    return {
-      status: "Clean",
-      text: "В базе нет серьезных правонарушений. Были только бытовые штрафы."
-    };
-  }
-
-  if (roll < 0.85) {
-    return {
-      status: "Minor",
-      text: "Есть несколько административных эпизодов: драка, нарушение порядка, мелкие долги."
-    };
-  }
-
-  return {
-    status: "Wanted",
-    text: "Есть открытые вопросы у полиции, персонаж периодически менял адрес и круг общения."
-  };
-}
-
-function generateLore(nickname) {
-  const [firstName, lastName] = nickname.split("_");
-  const age = Math.floor(Math.random() * 23) + 21;
-  const criminalRecord = generateCriminalRecord();
-
-  return {
-    nickname,
-    fullName: `${firstName} ${lastName}`,
-    age,
-    origin: randomFrom(origins),
-    trait: randomFrom(traits),
-    job: randomFrom(jobs),
-    habit: randomFrom(habits),
-    childhood: randomFrom(childhoods),
-    health: randomFrom(diseases),
-    weaponSkills: randomFrom(weaponSkills),
-    criminalRecord
-  };
-}
-
 function validateNickname(value) {
   const nickname = value.trim();
   const errors = [];
   const suggestions = [];
 
   if (!nickname) {
-    return { isValid: false, errors, suggestions };
+    return { isValid: false, errors: [], suggestions: [] };
   }
 
   if (!nickname.includes("_")) {
-    errors.push("Ник должен содержать нижнее подчеркивание (Имя_Фамилия).");
+    errors.push('Ник должен быть в формате Имя_Фамилия.');
   }
 
   const parts = nickname.split("_");
-  if (parts.length > 2) {
-    errors.push("В нике слишком много частей. Используйте формат Имя_Фамилия.");
+  if (parts.length !== 2) {
+    errors.push('Ник должен содержать только имя и фамилию через "_".');
   }
 
   const firstName = parts[0] || "";
   const lastName = parts[1] || "";
+  const latinOnly = /^[A-Za-z]+$/;
 
-  if (firstName.length < 2) {
-    errors.push("Имя слишком короткое (минимум 2 буквы).");
+  if (firstName.length < 2 || lastName.length < 2) {
+    errors.push("Имя и фамилия должны быть не короче 2 букв.");
   }
 
-  if (lastName.length < 2) {
-    errors.push("Фамилия слишком короткая (минимум 2 буквы).");
+  if (/\d/.test(nickname)) {
+    errors.push("В нике не должно быть цифр.");
+  }
+
+  if (firstName && !latinOnly.test(firstName)) {
+    errors.push("Имя должно быть только на английском.");
+  }
+
+  if (lastName && !latinOnly.test(lastName)) {
+    errors.push("Фамилия должна быть только на английском.");
+  }
+
+  if (firstName && firstName !== capitalizeWord(firstName)) {
+    errors.push("Имя должно начинаться с заглавной буквы.");
+  }
+
+  if (lastName && lastName !== capitalizeWord(lastName)) {
+    errors.push("Фамилия должна начинаться с заглавной буквы.");
   }
 
   const lowered = nickname.toLowerCase();
-  let containsBlockedWord = bannedBadWords.some((word) => lowered.includes(word));
-
-  if (!containsBlockedWord) {
-    const splitLower = lowered.split("_");
-    containsBlockedWord = bannedRoles.some((role) => splitLower.some((part) => part === role));
+  if (bannedBadWords.some((word) => lowered.includes(word))) {
+    errors.push("Ник содержит запрещенные слова.");
   }
 
-  if (containsBlockedWord) {
-    errors.push("Ник содержит запрещенные слова или оскорбления.");
-  }
+  if (errors.length > 0) {
+    const firstClean = capitalizeWord(firstName.replace(/[^A-Za-z]/g, "")) || randomFrom(firstNames);
+    const lastClean = capitalizeWord(lastName.replace(/[^A-Za-z]/g, "")) || randomFrom(lastNames);
 
-  const latinOnly = /^[a-zA-Z]+$/;
-  if (firstName && !latinOnly.test(firstName)) {
-    errors.push("Имя должно состоять только из английских букв.");
-  }
-  if (lastName && !latinOnly.test(lastName)) {
-    errors.push("Фамилия должна состоять только из английских букв.");
-  }
-
-  if (firstName && firstName[0] !== firstName[0].toUpperCase()) {
-    errors.push("Имя должно начинаться с большой буквы.");
-  }
-  if (firstName && firstName.slice(1) !== firstName.slice(1).toLowerCase()) {
-    errors.push("Остальные буквы имени должны быть строчными.");
-  }
-  if (lastName && lastName[0] !== lastName[0].toUpperCase()) {
-    errors.push("Фамилия должна начинаться с большой буквы.");
-  }
-  if (lastName && lastName.slice(1) !== lastName.slice(1).toLowerCase()) {
-    errors.push("Остальные буквы фамилии должны быть строчными.");
-  }
-
-  if (errors.length > 0 && !containsBlockedWord) {
-    const firstClean = firstName.replace(/[^a-zA-Z]/g, "");
-    const lastClean = lastName.replace(/[^a-zA-Z]/g, "");
-
-    if (firstClean && lastClean) {
-      const firstFixed = capitalizeWord(firstClean);
-      const lastFixed = capitalizeWord(lastClean);
-      suggestions.push(`${firstFixed}_${lastFixed}`);
-      suggestions.push(`${firstFixed}_${lastFixed}ov`);
-      suggestions.push(`${firstFixed}y_${lastFixed}`);
-    } else if (firstClean) {
-      const firstFixed = capitalizeWord(firstClean);
-      suggestions.push(`${firstFixed}_Smith`);
-      suggestions.push(`${firstFixed}_Johnson`);
-    } else {
-      suggestions.push("John_Doe");
-      suggestions.push("Alex_Mason");
-    }
+    suggestions.push(`${firstClean}_${lastClean}`);
+    suggestions.push(randomNickname());
+    suggestions.push("John_Wick");
   }
 
   return {
     isValid: errors.length === 0,
-    errors,
-    suggestions: Array.from(new Set(suggestions)).slice(0, 3),
-    lore: errors.length === 0 ? generateLore(nickname) : null
+    errors: Array.from(new Set(errors)),
+    suggestions: Array.from(new Set(suggestions)).slice(0, 3)
   };
 }
 
@@ -218,7 +128,7 @@ function renderRecent() {
   const recent = loadRecent();
 
   if (!recent.length) {
-    els.recent.innerHTML = '<p class="muted">Пока пусто. Проверь первый ник.</p>';
+    els.recent.innerHTML = '<p class="muted">Последние проверки появятся здесь.</p>';
     return;
   }
 
@@ -226,7 +136,7 @@ function renderRecent() {
     <button class="recent-item" type="button" data-nick="${item.nickname}">
       <div>
         <strong>${item.nickname}</strong>
-        <span>${item.valid ? "Прошел проверку" : "Есть ошибки"}</span>
+        <span>${item.valid ? "Ник принят" : "Есть ошибки"}</span>
       </div>
       <span>${item.valid ? "OK" : "ERR"}</span>
     </button>
@@ -247,25 +157,17 @@ function renderStatus(result, nickname) {
   }
 
   if (result.isValid) {
-    currentLore = result.lore;
     els.status.innerHTML = `
       <div class="result-badge success">Ник прошел проверку</div>
       <h3>${nickname}</h3>
-      <p>Формат выглядит корректно: имя и фамилия оформлены по RP-шаблону.</p>
-      <div class="result-actions">
-        <button class="show-lore" id="showLoreButton" type="button">Открыть личное дело</button>
-        <button class="show-lore" id="reuseButton" type="button">Оставить этот ник</button>
-      </div>
+      <ul class="rules">
+        <li>Формат ника правильный.</li>
+        <li>Имя и фамилия выглядят корректно.</li>
+      </ul>
     `;
-
-    document.getElementById("showLoreButton").addEventListener("click", openLoreModal);
-    document.getElementById("reuseButton").addEventListener("click", () => {
-      navigator.clipboard.writeText(nickname).catch(() => {});
-    });
     return;
   }
 
-  currentLore = null;
   const errorMarkup = result.errors.map((error) => `<li>${error}</li>`).join("");
   const suggestionsMarkup = result.suggestions.length
     ? `
@@ -290,62 +192,16 @@ function renderStatus(result, nickname) {
   });
 }
 
-function renderLore(lore) {
-  if (!lore) return;
-
-  els.loreInfo.innerHTML = `
-    <div class="lore-grid">
-      <div class="lore-card"><strong>Полное имя</strong><span>${lore.fullName}</span></div>
-      <div class="lore-card"><strong>Возраст</strong><span>${lore.age}</span></div>
-      <div class="lore-card"><strong>Происхождение</strong><span>${lore.origin}</span></div>
-      <div class="lore-card"><strong>Работа</strong><span>${lore.job}</span></div>
-    </div>
-  `;
-
-  els.loreBio.innerHTML = `
-    <ul class="detail-list">
-      <li>По характеру персонаж ${lore.trait}.</li>
-      <li>В детстве ${lore.childhood}.</li>
-      <li>Повседневная привычка: ${lore.habit}.</li>
-      <li>Состояние здоровья: ${lore.health}.</li>
-    </ul>
-  `;
-
-  els.loreCrime.innerHTML = `
-    <ul class="detail-list">
-      <li>Статус: ${lore.criminalRecord.status}.</li>
-      <li>${lore.criminalRecord.text}</li>
-      <li>Навыки оружия: ${lore.weaponSkills}.</li>
-    </ul>
-  `;
-}
-
 function openModal(dialog) {
-  if (!dialog.open) {
+  if (dialog && !dialog.open) {
     dialog.showModal();
   }
 }
 
 function closeModal(dialog) {
-  if (dialog.open) {
+  if (dialog && dialog.open) {
     dialog.close();
   }
-}
-
-function openLoreModal() {
-  renderLore(currentLore);
-  setActiveTab("info");
-  openModal(els.loreModal);
-}
-
-function setActiveTab(tabName) {
-  els.loreTabs.querySelectorAll(".tab-button").forEach((button) => {
-    button.classList.toggle("is-active", button.dataset.tab === tabName);
-  });
-
-  document.querySelectorAll(".tab-panel").forEach((panel) => {
-    panel.classList.toggle("is-active", panel.dataset.panel === tabName);
-  });
 }
 
 function runCheck() {
@@ -361,36 +217,9 @@ function runCheck() {
   }
 }
 
-function setTheme(theme) {
-  document.body.classList.toggle("is-dark", theme === "dark");
-  localStorage.setItem(themeKey, theme);
-}
-
-function toggleTheme() {
-  const nextTheme = document.body.classList.contains("is-dark") ? "light" : "dark";
-  setTheme(nextTheme);
-}
-
-function initTheme() {
-  const storedTheme = localStorage.getItem(themeKey);
-  if (storedTheme === "light" || storedTheme === "dark") {
-    setTheme(storedTheme);
-    return;
-  }
-  setTheme("dark");
-}
-
 els.random.addEventListener("click", () => {
   els.input.value = randomNickname();
   runCheck();
-});
-
-els.copy.addEventListener("click", async () => {
-  const value = els.input.value.trim();
-  if (!value) return;
-  try {
-    await navigator.clipboard.writeText(value);
-  } catch {}
 });
 
 els.check.addEventListener("click", runCheck);
@@ -400,23 +229,14 @@ els.input.addEventListener("keydown", (event) => {
   }
 });
 
-els.theme.addEventListener("click", toggleTheme);
 els.faqButton.addEventListener("click", () => openModal(els.faqModal));
-els.loreTabs.addEventListener("click", (event) => {
-  const target = event.target.closest("[data-tab]");
-  if (!target) return;
-  setActiveTab(target.dataset.tab);
-});
 
 document.querySelectorAll("[data-close]").forEach((button) => {
   button.addEventListener("click", () => {
     const dialog = document.getElementById(button.dataset.close);
-    if (dialog) {
-      closeModal(dialog);
-    }
+    closeModal(dialog);
   });
 });
 
-initTheme();
 renderRecent();
 renderStatus({ isValid: false, errors: [], suggestions: [] }, "");
