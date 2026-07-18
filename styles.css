@@ -388,8 +388,8 @@ body.is-dark .status {
 }
 
 .modal::backdrop {
-  background: rgba(17, 14, 13, 0.5);
-  backdrop-filter: blur(6px);
+  background: rgba(8, 7, 7, 0.74);
+  backdrop-filter: blur(4px);
 }
 
 .modal-card {
@@ -398,6 +398,12 @@ body.is-dark .status {
   border-radius: 20px;
   box-shadow: var(--shadow);
   overflow: hidden;
+}
+
+.modal-card-faq {
+  background: linear-gradient(180deg, rgba(31, 24, 22, 0.98), rgba(24, 19, 18, 0.98));
+  border-color: rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
 }
 
 .modal-card-wide {
@@ -414,6 +420,61 @@ body.is-dark .status {
 
 .modal-body {
   padding: 14px 16px 16px;
+}
+
+.faq-body {
+  padding: 18px 18px 20px;
+  color: #d8cdc2;
+  line-height: 1.65;
+}
+
+.faq-body p {
+  margin: 0 0 14px;
+}
+
+.faq-body strong {
+  color: #f4ede6;
+}
+
+.faq-body .detail-list {
+  margin: 0 0 16px;
+  padding-left: 18px;
+}
+
+.faq-body .detail-list li {
+  color: #d8cdc2;
+}
+
+.faq-examples {
+  list-style: disc;
+}
+
+.example-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  margin-right: 8px;
+  font-weight: 800;
+}
+
+.example-mark.ok {
+  color: #37c86b;
+}
+
+.example-mark.bad {
+  color: #ff684f;
+}
+
+.modal-card-faq .icon-button {
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.modal-card-faq .icon-button:hover {
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .tabs {
