@@ -61,9 +61,9 @@ input {
 
 .page-shell {
   position: relative;
-  max-width: 1220px;
+  max-width: 980px;
   margin: 0 auto;
-  padding: 32px 20px 48px;
+  padding: 16px 14px 20px;
 }
 
 .ambient {
@@ -76,18 +76,18 @@ input {
 }
 
 .ambient-a {
-  top: 88px;
-  right: 40px;
-  width: 220px;
-  height: 220px;
+  top: 28px;
+  right: 24px;
+  width: 150px;
+  height: 150px;
   background: rgba(212, 73, 31, 0.22);
 }
 
 .ambient-b {
-  bottom: 80px;
+  bottom: 20px;
   left: 10px;
-  width: 190px;
-  height: 190px;
+  width: 130px;
+  height: 130px;
   background: rgba(66, 120, 255, 0.16);
 }
 
@@ -101,19 +101,19 @@ input {
 .hero {
   display: flex;
   justify-content: space-between;
-  gap: 24px;
+  gap: 14px;
   align-items: flex-start;
-  margin-bottom: 28px;
+  margin-bottom: 14px;
 }
 
 .eyebrow,
 .panel-kicker {
-  margin: 0 0 10px;
+  margin: 0 0 6px;
   color: var(--accent);
   font-family: "Space Grotesk", sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.76rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -126,17 +126,17 @@ input {
 }
 
 .hero h1 {
-  max-width: 720px;
-  font-size: clamp(2.2rem, 5vw, 4.2rem);
-  line-height: 0.95;
+  max-width: 560px;
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  line-height: 1;
 }
 
 .hero-text {
-  max-width: 640px;
-  margin: 16px 0 0;
+  max-width: 520px;
+  margin: 10px 0 0;
   color: var(--muted);
-  font-size: 1.02rem;
-  line-height: 1.65;
+  font-size: 0.92rem;
+  line-height: 1.45;
 }
 
 .theme-toggle,
@@ -161,7 +161,7 @@ input {
 .secondary-button,
 .primary-button,
 .icon-button {
-  padding: 12px 18px;
+  padding: 9px 14px;
   font-weight: 700;
 }
 
@@ -185,21 +185,21 @@ input {
 
 .layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.8fr);
-  gap: 22px;
+  grid-template-columns: minmax(0, 1.45fr) minmax(220px, 0.7fr);
+  gap: 14px;
 }
 
 .panel {
   position: relative;
   background: var(--panel);
   border: 1px solid var(--line);
-  border-radius: 28px;
+  border-radius: 20px;
   box-shadow: var(--shadow);
-  padding: 24px;
+  padding: 16px;
 }
 
 .panel-primary {
-  min-height: 540px;
+  min-height: 360px;
 }
 
 .panel-tip {
@@ -211,13 +211,13 @@ input {
 .panel-head {
   display: flex;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .panel-head.compact {
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 }
 
 .field {
@@ -226,19 +226,20 @@ input {
 
 .field span {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   color: var(--muted);
   font-weight: 700;
+  font-size: 0.92rem;
 }
 
 .field input {
   width: 100%;
-  padding: 18px 20px;
+  padding: 14px 16px;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 14px;
   background: rgba(255, 255, 255, 0.42);
   color: var(--text);
-  font-size: 1.06rem;
+  font-size: 0.98rem;
   outline: none;
 }
 
@@ -254,15 +255,15 @@ body.is-dark .field input {
 .actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin: 18px 0 22px;
+  gap: 8px;
+  margin: 12px 0 14px;
 }
 
 .status {
-  min-height: 276px;
+  min-height: 180px;
   border: 1px dashed var(--line);
-  border-radius: 24px;
-  padding: 20px;
+  border-radius: 16px;
+  padding: 14px;
   background: rgba(255, 255, 255, 0.24);
 }
 
@@ -296,49 +297,50 @@ body.is-dark .status {
 }
 
 .status h3 {
-  margin: 16px 0 10px;
-  font-size: 1.35rem;
+  margin: 12px 0 8px;
+  font-size: 1.1rem;
 }
 
 .error-list,
 .rules,
 .detail-list {
-  margin: 14px 0 0;
+  margin: 10px 0 0;
   padding-left: 18px;
 }
 
 .error-list li,
 .rules li,
 .detail-list li {
-  margin-bottom: 8px;
-  line-height: 1.5;
+  margin-bottom: 6px;
+  line-height: 1.4;
+  font-size: 0.94rem;
 }
 
 .suggestions {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 18px;
+  gap: 8px;
+  margin-top: 12px;
 }
 
 .suggestion,
 .show-lore,
 .recent-item,
 .tab-button {
-  padding: 10px 14px;
+  padding: 8px 12px;
 }
 
 .result-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 18px;
+  gap: 8px;
+  margin-top: 12px;
 }
 
 .recent-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .recent-item {
@@ -357,7 +359,7 @@ body.is-dark .status {
 
 .recent-item span {
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.82rem;
 }
 
 .modal {
@@ -375,13 +377,13 @@ body.is-dark .status {
 .modal-card {
   background: var(--panel-strong);
   border: 1px solid var(--line);
-  border-radius: 28px;
+  border-radius: 20px;
   box-shadow: var(--shadow);
   overflow: hidden;
 }
 
 .modal-card-wide {
-  min-height: 520px;
+  min-height: 420px;
 }
 
 .modal-head {
@@ -389,17 +391,17 @@ body.is-dark .status {
   justify-content: space-between;
   gap: 16px;
   align-items: center;
-  padding: 22px 24px 0;
+  padding: 16px 16px 0;
 }
 
 .modal-body {
-  padding: 20px 24px 24px;
+  padding: 14px 16px 16px;
 }
 
 .tabs {
   display: flex;
-  gap: 10px;
-  padding: 18px 24px 0;
+  gap: 8px;
+  padding: 12px 16px 0;
 }
 
 .tab-button.is-active {
@@ -419,13 +421,13 @@ body.is-dark .status {
 .lore-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  gap: 10px;
 }
 
 .lore-card {
-  padding: 16px;
+  padding: 12px;
   border: 1px solid var(--line);
-  border-radius: 20px;
+  border-radius: 14px;
   background: rgba(255, 255, 255, 0.28);
 }
 
@@ -451,16 +453,20 @@ body.is-dark .lore-card {
   .theme-toggle {
     align-self: flex-start;
   }
+
+  .panel-primary {
+    min-height: 0;
+  }
 }
 
 @media (max-width: 640px) {
   .page-shell {
-    padding-inline: 14px;
+    padding-inline: 10px;
   }
 
   .panel,
   .modal-card {
-    border-radius: 22px;
+    border-radius: 16px;
   }
 
   .actions,

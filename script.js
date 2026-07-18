@@ -377,9 +377,7 @@ function initTheme() {
     setTheme(storedTheme);
     return;
   }
-
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  setTheme(prefersDark ? "dark" : "light");
+  setTheme("dark");
 }
 
 els.random.addEventListener("click", () => {
