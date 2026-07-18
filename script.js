@@ -5,7 +5,7 @@ const firstNames = [
 
 const lastNames = [
   "Wick", "Smith", "Mason", "Walker", "Carter", "Miller", "Jackson", "Taylor",
-  "Anderson", "Parker", "Hunter", "Cooper", "Brooks", "Foster", "Bennett"
+  "Anderson", "Parker", "Hunter", "Cooper", "Brooks", "Foster", "Bennett", "Rodriguez"
 ];
 
 const bannedBadWords = [
@@ -17,6 +17,57 @@ const bannedBadWords = [
   "228", "666", "777", "1488"
 ];
 
+const dossierOrigins = [
+  "🇺🇸 Вайс-Сити (США)",
+  "🇺🇸 Лос-Сантос (США)",
+  "🇺🇸 Сан-Фиерро (США)",
+  "🇺🇸 Либерти-Сити (США)",
+  "🇨🇦 Торонто (Канада)"
+];
+
+const dossierTraits = [
+  "Хитрый манипулятор",
+  "Спокойный стратег",
+  "Холодный прагматик",
+  "Упрямый карьерист",
+  "Сдержанный реалист"
+];
+
+const dossierHabits = [
+  "Коллекционирует старые монеты",
+  "Записывает мысли в потрепанный блокнот",
+  "Каждое утро слушает полицейскую волну",
+  "Носит при себе счастливую зажигалку",
+  "Любит ночные прогулки по набережной"
+];
+
+const dossierYouthItems = [
+  "Вырос в благополучной семье, но всегда искал острых ощущений.",
+  "С ранних лет привык рассчитывать только на себя и быстро взрослел.",
+  "Половину детства провел на улицах района, где уважение приходилось заслуживать.",
+  "Учился хорошо, но чаще тянулся к риску, чем к спокойной жизни."
+];
+
+const dossierAdultItems = [
+  "Имеет медицинское образование, но был уволен за нарушение субординации.",
+  "Работал в нескольких частных структурах, пока не решил начать жизнь с нуля.",
+  "Сменил несколько профессий и научился держать лицо даже под давлением.",
+  "Быстро поднялся по карьерной лестнице, но не ужился с жесткими правилами."
+];
+
+const dossierHealthItems = [
+  "Здоров, противопоказаний нет",
+  "Физически вынослив, хронических заболеваний не имеет",
+  "Состояние здоровья стабильное, жалоб не зафиксировано",
+  "Медицинских ограничений не выявлено"
+];
+
+const cleanCrimeStatuses = [
+  "Не привлекался к уголовной ответственности.",
+  "Судимостей не имеет, в розыске не числится.",
+  "По базе проходит как законопослушный гражданин."
+];
+
 const els = {
   input: document.getElementById("nicknameInput"),
   status: document.getElementById("statusBox"),
@@ -24,7 +75,18 @@ const els = {
   check: document.getElementById("checkButton"),
   recent: document.getElementById("recentList"),
   faqButton: document.getElementById("faqButton"),
-  faqModal: document.getElementById("faqModal")
+  faqModal: document.getElementById("faqModal"),
+  dossierModal: document.getElementById("dossierModal"),
+  dossierCitizen: document.getElementById("dossierCitizen"),
+  dossierAge: document.getElementById("dossierAge"),
+  dossierOrigin: document.getElementById("dossierOrigin"),
+  dossierTrait: document.getElementById("dossierTrait"),
+  dossierHabit: document.getElementById("dossierHabit"),
+  dossierYouth: document.getElementById("dossierYouth"),
+  dossierAdult: document.getElementById("dossierAdult"),
+  dossierHealth: document.getElementById("dossierHealth"),
+  dossierCrimeStatus: document.getElementById("dossierCrimeStatus"),
+  skillList: document.getElementById("skillList")
 };
 
 const recentChecksKey = "zyro-russia-recent";
@@ -42,6 +104,20 @@ function capitalizeWord(value) {
   return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
 }
 
+function seededNumber(value, min, max) {
+  let hash = 0;
+
+  for (let index = 0; index < value.length; index += 1) {
+    hash = ((hash << 5) - hash + value.charCodeAt(index)) | 0;
+  }
+
+  return min + Math.abs(hash % (max - min + 1));
+}
+
+function seededPick(value, list) {
+  return list[seededNumber(value, 0, list.length - 1)];
+}
+
 function validateNickname(value) {
   const nickname = value.trim();
   const errors = [];
@@ -52,7 +128,7 @@ function validateNickname(value) {
   }
 
   if (!nickname.includes("_")) {
-    errors.push('Ник должен быть в формате Имя_Фамилия.');
+    errors.push("Ник должен быть в формате Имя_Фамилия.");
   }
 
   const parts = nickname.split("_");
@@ -150,6 +226,38 @@ function renderRecent() {
   });
 }
 
+function buildSkills(nickname) {
+  return [
+    { name: "Deagle", value: seededNumber(`${nickname}-deagle`, 5, 85) },
+    { name: "M4 Carbine", value: seededNumber(`${nickname}-m4`, 25, 96) },
+    { name: "Shotgun", value: seededNumber(`${nickname}-shotgun`, 10, 78) },
+    { name: "AK-47", value: seededNumber(`${nickname}-ak`, 8, 88) }
+  ];
+}
+
+function fillDossier(nickname) {
+  const [firstName = "John", lastName = "Rodriguez"] = nickname.split("_");
+  const fullName = `${capitalizeWord(firstName)} ${capitalizeWord(lastName)}`;
+
+  els.dossierCitizen.textContent = fullName;
+  els.dossierAge.textContent = String(seededNumber(`${nickname}-age`, 24, 52));
+  els.dossierOrigin.textContent = seededPick(`${nickname}-origin`, dossierOrigins);
+  els.dossierTrait.textContent = seededPick(`${nickname}-trait`, dossierTraits);
+  els.dossierHabit.textContent = seededPick(`${nickname}-habit`, dossierHabits);
+  els.dossierYouth.textContent = seededPick(`${nickname}-youth`, dossierYouthItems);
+  els.dossierAdult.textContent = seededPick(`${nickname}-adult`, dossierAdultItems);
+  els.dossierHealth.textContent = seededPick(`${nickname}-health`, dossierHealthItems);
+  els.dossierCrimeStatus.textContent = seededPick(`${nickname}-crime`, cleanCrimeStatuses);
+
+  els.skillList.innerHTML = buildSkills(nickname).map((skill) => `
+    <div class="skill-row">
+      <span class="skill-name">${skill.name}</span>
+      <span class="skill-value">${skill.value}%</span>
+      <div class="skill-bar"><span style="width:${skill.value}%"></span></div>
+    </div>
+  `).join("");
+}
+
 function renderStatus(result, nickname) {
   if (!nickname) {
     els.status.innerHTML = '<p class="status-empty">Здесь появится результат проверки.</p>';
@@ -160,11 +268,20 @@ function renderStatus(result, nickname) {
     els.status.innerHTML = `
       <div class="result-badge success">Ник прошел проверку</div>
       <h3>${nickname}</h3>
-      <ul class="rules">
-        <li>Формат ника правильный.</li>
-        <li>Имя и фамилия выглядят корректно.</li>
-      </ul>
+      <p><strong>Отличный ник!</strong><br>Ваш ник полностью соответствует правилам RP.</p>
+      <div class="result-actions">
+        <button class="show-lore" id="openDossierButton" type="button">📂 Открыть расширенное досье</button>
+      </div>
     `;
+
+    const dossierButton = document.getElementById("openDossierButton");
+    if (dossierButton) {
+      dossierButton.addEventListener("click", () => {
+        fillDossier(nickname);
+        openModal(els.dossierModal);
+      });
+    }
+
     return;
   }
 
@@ -204,6 +321,25 @@ function closeModal(dialog) {
   }
 }
 
+function setupTabs() {
+  const tabButtons = document.querySelectorAll("[data-tab]");
+  const panels = document.querySelectorAll("[data-panel]");
+
+  tabButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const target = button.dataset.tab;
+
+      tabButtons.forEach((item) => {
+        item.classList.toggle("is-active", item === button);
+      });
+
+      panels.forEach((panel) => {
+        panel.classList.toggle("is-active", panel.dataset.panel === target);
+      });
+    });
+  });
+}
+
 function runCheck() {
   const nickname = els.input.value.trim();
   const result = validateNickname(nickname);
@@ -238,5 +374,6 @@ document.querySelectorAll("[data-close]").forEach((button) => {
   });
 });
 
+setupTabs();
 renderRecent();
 renderStatus({ isValid: false, errors: [], suggestions: [] }, "");

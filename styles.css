@@ -477,6 +477,46 @@ body.is-dark .status {
   background: rgba(255, 255, 255, 0.08);
 }
 
+.modal-card-dossier {
+  background: linear-gradient(180deg, rgba(26, 21, 20, 0.99), rgba(20, 16, 15, 0.99));
+  border-color: rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+}
+
+.dossier-title {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.dossier-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 1.25rem;
+}
+
+.dossier-citizen {
+  margin: 6px 0 0;
+  color: #cdbfb3;
+  font-size: 0.92rem;
+}
+
+.modal-card-dossier .icon-button {
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.modal-card-dossier .icon-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
 .tabs {
   display: flex;
   gap: 8px;
@@ -495,6 +535,81 @@ body.is-dark .status {
 
 .tab-panel.is-active {
   display: block;
+}
+
+.dossier-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.dossier-card {
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.dossier-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #b8aa9f;
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.dossier-value {
+  color: #f4ede6;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.story-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.story-text {
+  margin: 0;
+  color: #ddd1c6;
+  line-height: 1.6;
+}
+
+.skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skill-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px 14px;
+  align-items: center;
+}
+
+.skill-name,
+.skill-value {
+  color: #f4ede6;
+  font-weight: 700;
+}
+
+.skill-bar {
+  grid-column: 1 / -1;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.skill-bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
 }
 
 .lore-grid {
@@ -547,6 +662,10 @@ body.is-dark .lore-card {
   }
 
   .lore-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dossier-grid {
     grid-template-columns: 1fr;
   }
 

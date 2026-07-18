@@ -87,6 +87,80 @@
     </div>
   </dialog>
 
+  <dialog class="modal" id="dossierModal">
+    <div class="modal-card modal-card-dossier">
+      <div class="modal-head">
+        <div class="dossier-title">
+          <span class="dossier-icon">📁</span>
+          <div>
+            <h3>Личное дело</h3>
+            <p class="dossier-citizen">Гражданин: <strong id="dossierCitizen">John Rodriguez</strong></p>
+          </div>
+        </div>
+        <button class="icon-button" data-close="dossierModal" type="button">Закрыть</button>
+      </div>
+
+      <div class="tabs" id="dossierTabs">
+        <button class="tab-button is-active" data-tab="info" type="button">Инфо</button>
+        <button class="tab-button" data-tab="bio" type="button">Биография</button>
+        <button class="tab-button" data-tab="crime" type="button">Криминал</button>
+      </div>
+
+      <div class="modal-body">
+        <section class="tab-panel is-active" data-panel="info">
+          <div class="dossier-grid">
+            <article class="dossier-card">
+              <span class="dossier-label">Возраст</span>
+              <strong class="dossier-value"><span id="dossierAge">42</span> лет</strong>
+            </article>
+            <article class="dossier-card">
+              <span class="dossier-label">Происхождение</span>
+              <strong class="dossier-value" id="dossierOrigin">🇺🇸 Вайс-Сити (США)</strong>
+            </article>
+            <article class="dossier-card">
+              <span class="dossier-label">Характер</span>
+              <strong class="dossier-value" id="dossierTrait">Хитрый манипулятор</strong>
+            </article>
+            <article class="dossier-card">
+              <span class="dossier-label">Привычка</span>
+              <strong class="dossier-value" id="dossierHabit">Коллекционирует старые монеты</strong>
+            </article>
+          </div>
+        </section>
+
+        <section class="tab-panel" data-panel="bio">
+          <div class="story-stack">
+            <article class="dossier-card">
+              <span class="dossier-label">Детство и юность</span>
+              <p class="story-text" id="dossierYouth">Вырос в благополучной семье, но всегда искал острых ощущений.</p>
+            </article>
+            <article class="dossier-card">
+              <span class="dossier-label">Взрослая жизнь</span>
+              <p class="story-text" id="dossierAdult">Имеет медицинское образование, но был уволен за нарушение субординации.</p>
+            </article>
+            <article class="dossier-card">
+              <span class="dossier-label">Здоровье</span>
+              <p class="story-text" id="dossierHealth">Здоров, противопоказаний нет</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="tab-panel" data-panel="crime">
+          <div class="story-stack">
+            <article class="dossier-card">
+              <span class="dossier-label">Чист перед законом</span>
+              <p class="story-text" id="dossierCrimeStatus">Не привлекался к уголовной ответственности.</p>
+            </article>
+            <article class="dossier-card">
+              <span class="dossier-label">Навыки стрельбы</span>
+              <div class="skill-list" id="skillList"></div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </div>
+  </dialog>
+
   <script src="./script.js"></script>
 </body>
 </html>
